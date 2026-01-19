@@ -1,5 +1,5 @@
 
-1. What is a function pointer?
+   1. What is a function pointer?
 
 A function pointer is a variable that stores the address of a function and can be used to call that function indirectly.
 
@@ -93,8 +93,11 @@ void (*ISR_Vector[])(void) = {
 👉 Without function pointers, interrupts are impossible.
 
 4️⃣ State Machines (Common Embedded Pattern)
+
 void state_idle(void);
+
 void state_run(void);
+
 void state_error(void);
 
 void (*current_state)(void);
@@ -104,8 +107,11 @@ current_state();  // calls idle
 
 
 ✔ No if-else hell
+
 ✔ Clean state transitions
+
 ✔ Efficient memory usage
+
 
 5️⃣ RTOS (You already use RTX 😉)
 
@@ -122,13 +128,17 @@ void (*task_func)(void);
 👉 Task = function pointer
 
 3. Advantage of Function Pointer over Normal Function Call (IN YOUR CODE)
+   
 Your normal method:
 printf("sum : %d", sum(10,20));
 
 
 ❌ Fixed at compile time
+
 ❌ Cannot change behavior dynamically
+
 ❌ Not scalable
+
 
 Function pointer method:
 int (*funptr)(int,int);
@@ -137,12 +147,18 @@ printf("sum : %d", funptr(10,20));
 
 ✅ Advantages:
 Feature	Normal Call	Function Pointer
-Runtime flexibility	❌ No	✅ Yes
-Dynamic function selection	❌ No	✅ Yes
-Used in drivers/RTOS	❌ No	✅ Yes
-Reduces if-else chains	❌ No	✅ Yes
+Runtime flexibility	           ❌ No	✅ Yes
+
+Dynamic function selection	   ❌ No	✅ Yes
+
+Used in drivers/RTOS	       ❌ No	✅ Yes
+
+Reduces if-else chains	        ❌ No	✅ Yes
+
 Interrupt / callback support	❌ No	✅ Yes
+
 4. REAL Embedded Example using your code
+5. 
 int (*funptr)(int,int);
 
 char operation = '*';
@@ -163,4 +179,6 @@ printf("Result = %d", funptr(10,20));
 
 5. Interview-Ready One-Line Answer 🧠
 
-Function pointers are used in embedded systems to achieve runtime flexibility, hardware abstraction, interrupt handling, RTOS task management, and efficient state machines. They allow dynamic selection of functions instead of fixed compile-time calls.
+Function pointers are used in embedded systems to achieve runtime flexibility, hardware abstraction, 
+interrupt handling, RTOS task management, and efficient state machines. They allow dynamic selection 
+of functions instead of fixed compile-time calls.
