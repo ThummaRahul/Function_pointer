@@ -1,5 +1,6 @@
 
-   1. What is a function pointer?
+1. What is a function pointer?
+
 
 A function pointer is a variable that stores the address of a function and can be used to call that function indirectly.
 
@@ -9,6 +10,7 @@ funptr(10,20);   // calls sum(10,20)
 
 
 So instead of calling the function by name, you call it through a pointer.
+
 
 2. Why function pointers are IMPORTANT in C & Embedded Systems 🚀
 
@@ -70,7 +72,9 @@ struct uart_ops {
 
 
 ✔ Same application code
+
 ✔ Different hardware implementation
+
 ✔ Only function pointers change
 
 👉 This is how STM32 HAL, Linux drivers, RTOS work internally.
@@ -103,6 +107,7 @@ void state_error(void);
 void (*current_state)(void);
 
 current_state = state_idle;
+
 current_state();  // calls idle
 
 
@@ -127,6 +132,7 @@ void (*task_func)(void);
 
 👉 Task = function pointer
 
+
 3. Advantage of Function Pointer over Normal Function Call (IN YOUR CODE)
    
 Your normal method:
@@ -141,24 +147,27 @@ printf("sum : %d", sum(10,20));
 
 
 Function pointer method:
+
 int (*funptr)(int,int);
 funptr = &sum;
 printf("sum : %d", funptr(10,20));
 
 ✅ Advantages:
+
 Feature	Normal Call	Function Pointer
+
 Runtime flexibility	           ❌ No	✅ Yes
 
-Dynamic function selection	   ❌ No	✅ Yes
+Dynamic function selection	     ❌ No	✅ Yes
 
-Used in drivers/RTOS	       ❌ No	✅ Yes
+Used in drivers/RTOS	           ❌ No	✅ Yes
 
 Reduces if-else chains	        ❌ No	✅ Yes
 
-Interrupt / callback support	❌ No	✅ Yes
+Interrupt / callback support	  ❌ No	✅ Yes
 
 4. REAL Embedded Example using your code
-5. 
+
 int (*funptr)(int,int);
 
 char operation = '*';
